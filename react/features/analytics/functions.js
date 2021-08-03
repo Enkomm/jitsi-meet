@@ -13,7 +13,7 @@ import JitsiMeetJS, {
 } from '../base/lib-jitsi-meet';
 import { getJitsiMeetGlobalNS, loadScript, parseURIString } from '../base/util';
 
-import { AmplitudeHandler, MatomoHandler } from './handlers';
+// import { AmplitudeHandler, MatomoHandler } from './handlers';
 import logger from './logger';
 
 /**
@@ -103,27 +103,27 @@ export async function createHandlers({ getState }: { getState: Function }) {
     };
     const handlers = [];
 
-    if (amplitudeAPPKey) {
-        try {
-            const amplitude = new AmplitudeHandler(handlerConstructorOptions);
+    // if (amplitudeAPPKey) {
+    //     try {
+    //         const amplitude = new AmplitudeHandler(handlerConstructorOptions);
 
-            analytics.amplitudeIdentityProps = amplitude.getIdentityProps();
+    //         analytics.amplitudeIdentityProps = amplitude.getIdentityProps();
 
-            handlers.push(amplitude);
-        } catch (e) {
-            logger.error('Failed to initialize Amplitude handler', e);
-        }
-    }
+    //         handlers.push(amplitude);
+    //     } catch (e) {
+    //         logger.error('Failed to initialize Amplitude handler', e);
+    //     }
+    // }
 
-    if (matomoEndpoint && matomoSiteID) {
-        try {
-            const matomo = new MatomoHandler(handlerConstructorOptions);
+    // if (matomoEndpoint && matomoSiteID) {
+    //     try {
+    //         const matomo = new MatomoHandler(handlerConstructorOptions);
 
-            handlers.push(matomo);
-        } catch (e) {
-            logger.error('Failed to initialize Matomo handler', e);
-        }
-    }
+    //         handlers.push(matomo);
+    //     } catch (e) {
+    //         logger.error('Failed to initialize Matomo handler', e);
+    //     }
+    // }
 
     if (Array.isArray(scriptURLs) && scriptURLs.length > 0) {
         let externalHandlers;
