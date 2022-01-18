@@ -1,30 +1,29 @@
 // @flow
+import type { Dispatch } from 'redux';
 
 import { openDialog } from '../../../base/dialog';
 import { translate } from '../../../base/i18n';
-import { IconAudioRoute } from '../../../base/icons';
+import { IconVolumeEmpty } from '../../../base/icons';
 import { connect } from '../../../base/redux';
 import { AbstractButton, type AbstractButtonProps } from '../../../base/toolbox/components';
 
 import AudioRoutePickerDialog from './AudioRoutePickerDialog';
 
-
 type Props = AbstractButtonProps & {
 
     /**
-     * The redux {@code dispatch} function used to open/show the
-     * {@code AudioRoutePickerDialog}.
+     * The Redux dispatch function.
      */
-    dispatch: Function
+    dispatch: Dispatch<any>
 };
 
 /**
- * A toolbar button which triggers an audio route picker when pressed.
+ * Implements an {@link AbstractButton} to open the audio device list.
  */
-class AudioRouteButton extends AbstractButton<Props, *> {
+class AudioDeviceToggleButton extends AbstractButton<Props, *> {
     accessibilityLabel = 'toolbar.accessibilityLabel.audioRoute';
-    icon = IconAudioRoute;
-    label = 'toolbar.audioRoute';
+    icon = IconVolumeEmpty;
+    label = 'toolbar.accessibilityLabel.audioRoute';
 
     /**
      * Handles clicking / pressing the button, and opens the appropriate dialog.
@@ -37,4 +36,5 @@ class AudioRouteButton extends AbstractButton<Props, *> {
     }
 }
 
-export default translate(connect()(AudioRouteButton));
+
+export default translate(connect()(AudioDeviceToggleButton));
