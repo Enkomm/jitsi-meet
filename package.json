@@ -68,7 +68,7 @@
     "react-focus-lock": "2.5.1",
     "react-i18next": "10.11.4",
     "react-linkify": "1.0.0-alpha",
-    "react-native": "0.64.2",
+    "react-native": "RocketChat/react-native#0.64.2",
     "react-native-background-timer": "2.4.0",
     "react-native-callstats": "3.70.1",
     "react-native-collapsible": "1.5.1",
