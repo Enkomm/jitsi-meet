@@ -45,7 +45,7 @@ export default {
         flexDirection: 'row',
         flexGrow: 0,
         justifyContent: 'flex-end',
-        marginBottom: 5
+        margin: 6
     },
 
     /**
@@ -134,7 +134,13 @@ export default {
         position: 'absolute',
         maxWidth: '95%',
         overflow: 'hidden',
-        ...indicatorContainer
+        ...indicatorContainer,
+        padding: 0
+    },
+
+    bottomIndicatorsContainer: {
+        padding: 2,
+        flexDirection: 'row'
     },
 
     thumbnailTopIndicatorContainer: {
