@@ -957,14 +957,18 @@ var config = {
 
     // Options related to end-to-end (participant to participant) ping.
     // e2eping: {
-    //   // The interval in milliseconds at which pings will be sent.
-    //   // Defaults to 10000, set to <= 0 to disable.
-    //   pingInterval: 10000,
+    //   // Whether ene-to-end pings should be enabled.
+    //   enabled: false,
     //
-    //   // The interval in milliseconds at which analytics events
-    //   // with the measured RTT will be sent. Defaults to 60000, set
-    //   // to <= 0 to disable.
-    //   analyticsInterval: 60000,
+    //   // The number of responses to wait for.
+    //   numRequests: 5,
+    //
+    //   // The max conference size in which e2e pings will be sent.
+    //   maxConferenceSize: 200,
+    //
+    //   // The maximum number of e2e ping messages per second for the whole conference to aim for.
+    //   // This is used to contol the pacing of messages in order to reduce the load on the backend.
+    //   maxMessagesPerSecond: 250
     //   },
 
     // If set, will attempt to use the provided video input device label when
@@ -1311,6 +1315,10 @@ var config = {
     //     // Disables user resizable filmstrip. Also, allows configuration of the filmstrip
     //     // (width, tiles aspect ratios) through the interfaceConfig options.
     //     disableResizable: false,
+
+    //     // Disables the stage filmstrip
+    //     // (displaying multiple participants on stage besides the vertical filmstrip)
+    //     disableStageFilmstrip: false
     // },
 
     // Tile view related config options.
@@ -1319,7 +1327,6 @@ var config = {
     //     // not be possible to show the exact number of participants specified here.
     //     numberOfVisibleTiles: 25
     // },
-
 
     // Specifies whether the chat emoticons are disabled or not
     // disableChatSmileys: false,
