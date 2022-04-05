@@ -36,7 +36,7 @@ import {
     updateRemoteParticipantsOnLeave
 } from './functions';
 import './subscriber';
-import { getActiveParticipantsIds, isStageFilmstripEnabled } from './functions.web';
+import { getActiveParticipantsIds, getPinnedActiveParticipants, isStageFilmstripEnabled } from './functions.web';
 
 /**
  * Map of timers.
@@ -83,6 +83,10 @@ MiddlewareRegistry.register(store => next => action => {
     }
     case PARTICIPANT_JOINED: {
         result = next(action);
+        if (action.participant?.isLocalScreenShare) {
+            break;
+        }
+
         updateRemoteParticipants(store, action.participant?.id);
         break;
     }
@@ -183,9 +187,16 @@ MiddlewareRegistry.register(store => next => action => {
         const state = store.getState();
         const stageFilmstrip = isStageFilmstripEnabled(state);
         const currentLayout = getCurrentLayout(state);
+        const local = getLocalParticipant(state);
+
+        if (id === local.id) {
+            break;
+        }
 
         if (stageFilmstrip && currentLayout === LAYOUTS.VERTICAL_FILMSTRIP_VIEW) {
-            store.dispatch(addStageParticipant(id));
+            const isPinned = getPinnedActiveParticipants(state).some(p => p.participantId === id);
+
+            store.dispatch(addStageParticipant(id, Boolean(isPinned)));
         }
         break;
     }

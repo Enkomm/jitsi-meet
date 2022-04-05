@@ -44,6 +44,7 @@ import {
     conferenceWillJoin,
     conferenceWillLeave,
     dataChannelOpened,
+    e2eRttChanged,
     getConferenceOptions,
     kickedOut,
     lockStateChanged,
@@ -69,6 +70,7 @@ import {
     JitsiConferenceEvents,
     JitsiConnectionErrors,
     JitsiConnectionEvents,
+    JitsiE2ePingEvents,
     JitsiMediaDevicesEvents,
     JitsiParticipantConnectionStatus,
     JitsiTrackErrors,
@@ -1631,7 +1633,8 @@ export default {
         // In case there was no local audio when screen sharing was started the fact that we set the audio stream to
         // null will take care of the desktop audio stream cleanup.
         } else if (this._desktopAudioStream) {
-            await this.useAudioStream(null);
+            await room.replaceTrack(this._desktopAudioStream, null);
+            this._desktopAudioStream.dispose();
             this._desktopAudioStream = undefined;
         }
 
@@ -1974,9 +1977,9 @@ export default {
                     } else {
                         // If no local stream is present ( i.e. no input audio devices) we use the screen share audio
                         // stream as we would use a regular stream.
-                        logger.debug(`_switchToScreenSharing is using ${this._desktopAudioStream} for useAudioStream`);
-                        await this.useAudioStream(this._desktopAudioStream);
-
+                        logger.debug(`_switchToScreenSharing is using ${this._desktopAudioStream} for replacing it as`
+                        + ' the only audio track on the conference');
+                        await room.replaceTrack(null, this._desktopAudioStream);
                     }
                     APP.store.dispatch(setScreenAudioShareState(true));
                 }
@@ -2342,6 +2345,10 @@ export default {
             disableVideoMuteChange => {
                 APP.store.dispatch(setVideoUnmutePermissions(disableVideoMuteChange));
             });
+
+        room.on(
+            JitsiE2ePingEvents.E2E_RTT_CHANGED,
+            (...args) => APP.store.dispatch(e2eRttChanged(...args)));
 
         APP.UI.addListener(UIEvents.AUDIO_MUTED, muted => {
             this.muteAudio(muted);
