@@ -31,6 +31,7 @@
     },
     "audioDevices": {
         "bluetooth": "Bluetooth",
+        "car": "Car Audio",
         "headphones": "Headphones",
         "none": "No audio devices available",
         "phone": "Phone",
@@ -919,6 +920,7 @@
         "incomingMessage": "Incoming message",
         "language": "Language",
         "loggedIn": "Logged in as {{name}}",
+        "maxStageParticipants": "Maximum number of participants who can be pinned to the main stage",
         "microphones": "Microphones",
         "moderator": "Moderator",
         "more": "More",
