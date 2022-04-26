@@ -7,11 +7,7 @@ import {
     getParticipantCount,
     pinParticipant
 } from '../base/participants';
-import {
-    DEFAULT_MAX_COLUMNS,
-    ABSOLUTE_MAX_COLUMNS
-} from '../filmstrip/constants';
-import { getNumberOfPartipantsForTileView } from '../filmstrip/functions.web';
+import { isStageFilmstripAvailable } from '../filmstrip/functions';
 import { isVideoPlaying } from '../shared-video/functions';
 import { VIDEO_QUALITY_LEVELS } from '../video-quality/constants';
 
@@ -45,52 +41,14 @@ export function getCurrentLayout(state: Object) {
     if (shouldDisplayTileView(state)) {
         return LAYOUTS.TILE_VIEW;
     } else if (interfaceConfig.VERTICAL_FILMSTRIP) {
+        if (isStageFilmstripAvailable(state, 2)) {
+            return LAYOUTS.STAGE_FILMSTRIP_VIEW;
+        }
+
         return LAYOUTS.VERTICAL_FILMSTRIP_VIEW;
     }
 
     return LAYOUTS.HORIZONTAL_FILMSTRIP_VIEW;
-}
-
-/**
- * Returns how many columns should be displayed in tile view. The number
- * returned will be between 1 and 7, inclusive.
- *
- * @param {Object} state - The redux store state.
- * @param {number} width - Custom width to use for calculation.
- * @returns {number}
- */
-export function getMaxColumnCount() {
-    const configuredMax = (typeof interfaceConfig === 'undefined'
-        ? DEFAULT_MAX_COLUMNS
-        : interfaceConfig.TILE_VIEW_MAX_COLUMNS) || DEFAULT_MAX_COLUMNS;
-
-    return Math.min(Math.max(configuredMax, 1), ABSOLUTE_MAX_COLUMNS);
-}
-
-/**
- * Returns the cell count dimensions for tile view. Tile view tries to uphold
- * equal count of tiles for height and width, until maxColumn is reached in
- * which rows will be added but no more columns.
- *
- * @param {Object} state - The redux store state.
- * @param {boolean} stageFilmstrip - Whether the dimensions should be calculated for the stage filmstrip.
- * @returns {Object} An object is return with the desired number of columns,
- * rows, and visible rows (the rest should overflow) for the tile view layout.
- */
-export function getNotResponsiveTileViewGridDimensions(state: Object, stageFilmstrip: boolean = false) {
-    const maxColumns = getMaxColumnCount(state);
-    const { activeParticipants } = state['features/filmstrip'];
-    const numberOfParticipants = stageFilmstrip ? activeParticipants.length : getNumberOfPartipantsForTileView(state);
-    const columnsToMaintainASquare = Math.ceil(Math.sqrt(numberOfParticipants));
-    const columns = Math.min(columnsToMaintainASquare, maxColumns);
-    const rows = Math.ceil(numberOfParticipants / columns);
-    const minVisibleRows = Math.min(maxColumns, rows);
-
-    return {
-        columns,
-        minVisibleRows,
-        rows
-    };
 }
 
 /**

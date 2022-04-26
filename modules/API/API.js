@@ -87,6 +87,8 @@ import { toggleScreenshotCaptureSummary } from '../../react/features/screenshot-
 import { isScreenshotCaptureEnabled } from '../../react/features/screenshot-capture/functions';
 import { playSharedVideo, stopSharedVideo } from '../../react/features/shared-video/actions.any';
 import { extractYoutubeIdOrURL } from '../../react/features/shared-video/functions';
+import { toggleRequestingSubtitles, setRequestingSubtitles } from '../../react/features/subtitles/actions';
+import { isAudioMuteButtonDisabled } from '../../react/features/toolbox/functions';
 import { toggleTileView, setTileView } from '../../react/features/video-layout';
 import { muteAllParticipants } from '../../react/features/video-menu/actions';
 import { setVideoQuality } from '../../react/features/video-quality';
@@ -370,6 +372,12 @@ function initCommands() {
         'toggle-share-screen': (options = {}) => {
             sendAnalytics(createApiEvent('screen.sharing.toggled'));
             toggleScreenSharing(options.enable);
+        },
+        'toggle-subtitles': () => {
+            APP.store.dispatch(toggleRequestingSubtitles());
+        },
+        'set-subtitles': enabled => {
+            APP.store.dispatch(setRequestingSubtitles(enabled));
         },
         'toggle-tile-view': () => {
             sendAnalytics(createApiEvent('tile-view.toggled'));
@@ -693,6 +701,9 @@ function initCommands() {
         case 'is-audio-muted':
             callback(APP.conference.isLocalAudioMuted());
             break;
+        case 'is-audio-disabled':
+            callback(isAudioMuteButtonDisabled(APP.store.getState()));
+            break;
         case 'is-moderation-on': {
             const { mediaType } = request;
             const type = mediaType || MEDIA_TYPE.AUDIO;
@@ -724,6 +735,9 @@ function initCommands() {
             break;
         case 'is-sharing-screen':
             callback(Boolean(APP.conference.isSharingScreen));
+            break;
+        case 'is-start-silent':
+            callback(Boolean(APP.store.getState()['features/base/config'].startSilent));
             break;
         case 'get-content-sharing-participants': {
             const tracks = getState()['features/base/tracks'];
