@@ -1,6 +1,11 @@
 
 /* eslint-disable no-unused-vars, no-var */
 
+/*
+ * NOTE: If you add a new option please remember to document it here:
+ * https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-configuration
+ */
+
 var config = {
     // Connection
     //
@@ -1105,8 +1110,18 @@ var config = {
     // breakoutRooms: {
     //     // Hides the add breakout room button. This replaces `hideAddRoomButton`.
     //     hideAddRoomButton: false,
+    //     // Hides the auto assign participants button.
+    //     hideAutoAssignButton: false,
+    //     // Hides the participants pane footer menu.
+    //     hideFooterMenu: false,
     //     // Hides the join breakout room button.
-    //     hideJoinRoomButton: false
+    //     hideJoinRoomButton: false,
+    //     // Hides the moderator settings tab.
+    //     hideModeratorSettingsTab: false,
+    //     // Hides the more actions button.
+    //     hideMoreActionsButton: false,
+    //     // Hides the mute all button.
+    //     hideMuteAllButton: false
     // },
 
     // When true the user cannot add more images to be used as virtual background.
@@ -1135,7 +1150,7 @@ var config = {
     // If a label's id is not in any of the 2 arrays, it will not be visible at all on the header.
     // conferenceInfo: {
     //     // those labels will not be hidden in tandem with the toolbox.
-    //     alwaysVisible: ['recording', 'local-recording', 'raised-hands-count'],
+    //     alwaysVisible: ['recording', 'raised-hands-count'],
     //     // those labels will be auto-hidden in tandem with the toolbox buttons.
     //     autoHide: [
     //         'subject',
