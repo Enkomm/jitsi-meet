@@ -71,7 +71,7 @@ target 'JitsiMeetSDK' do
   pod 'RNWatch', :path => '../node_modules/react-native-watch-connectivity'
   pod 'RNDefaultPreference', :path => '../node_modules/react-native-default-preference'
   config = use_native_modules!
-  use_react_native!(:path => config[:reactNativePath], :hermes_enabled => false)
+  use_react_native!(:path => config["reactNativePath"])
 
   # Native pod dependencies
   #
@@ -82,7 +82,6 @@ target 'JitsiMeetSDK' do
 end
 
 post_install do |installer|
-  react_native_post_install(installer)
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       config.build_settings['ENABLE_BITCODE'] = 'YES'

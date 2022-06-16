@@ -13,7 +13,6 @@ if (googleServicesEnabled) {
 def vcode = (int) (((new Date().getTime() / 1000) - 1546297200) / 10)
 
 android {
-    ndkVersion rootProject.ext.ndkVersion
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
 
@@ -41,17 +40,10 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
-        release {
-            storeFile file(MYAPP_UPLOAD_STORE_FILE)
-            storePassword MYAPP_UPLOAD_STORE_PASSWORD
-            keyAlias MYAPP_UPLOAD_KEY_ALIAS
-            keyPassword MYAPP_UPLOAD_KEY_PASSWORD
-        }
     }
 
     buildTypes {
         debug {
-            applicationIdSuffix ".debug"
             buildConfigField "boolean", "GOOGLE_SERVICES_ENABLED", "${googleServicesEnabled}"
             buildConfigField "boolean", "LIBRE_BUILD", "${rootProject.ext.libreBuild}"
         }
@@ -59,7 +51,6 @@ android {
             // Uncomment the following line for singing a test release build.
             //signingConfig signingConfigs.debug
             minifyEnabled true
-            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules-release.pro'
             buildConfigField "boolean", "GOOGLE_SERVICES_ENABLED", "${googleServicesEnabled}"
             buildConfigField "boolean", "LIBRE_BUILD", "${rootProject.ext.libreBuild}"
