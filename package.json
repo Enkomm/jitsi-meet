@@ -155,6 +155,8 @@
     "validate": "npm ls",
     "start": "make dev",
     "ios": "react-native run-ios",
-    "android": "react-native run-android"
+    "android": "react-native run-android",
+    "android-sdk": "./android/scripts/release-sdk.sh /Volumes/Data/WorkingSpace/NtqProject/EnKomm/jitsi-meet/sdk/android",
+    "ios-sdk": "mkdir -p ios/sdk/out\nxcodebuild clean \\\n    -workspace ios/jitsi-meet.xcworkspace \\\n    -scheme JitsiMeetSDK\nxcodebuild archive \\\n    -workspace ios/jitsi-meet.xcworkspace \\\n    -scheme JitsiMeetSDK  \\\n    -configuration Release \\\n    -sdk iphonesimulator \\\n    -destination='generic/platform=iOS Simulator' \\\n    -archivePath ios/sdk/out/ios-simulator \\\n    VALID_ARCHS=x86_64 \\\n    ENABLE_BITCODE=NO \\\n    SKIP_INSTALL=NO \\\n    BUILD_LIBRARY_FOR_DISTRIBUTION=YES\nxcodebuild archive \\\n    -workspace ios/jitsi-meet.xcworkspace \\\n    -scheme JitsiMeetSDK  \\\n    -configuration Release \\\n    -sdk iphoneos \\\n    -destination='generic/platform=iOS' \\\n    -archivePath ios/sdk/out/ios-device \\\n    VALID_ARCHS=arm64 \\\n    ENABLE_BITCODE=NO \\\n    SKIP_INSTALL=NO \\\n    BUILD_LIBRARY_FOR_DISTRIBUTION=YES\nxcodebuild -create-xcframework \\\n    -framework ios/sdk/out/ios-device.xcarchive/Products/Library/Frameworks/JitsiMeetSDK.framework \\\n    -framework ios/sdk/out/ios-simulator.xcarchive/Products/Library/Frameworks/JitsiMeetSDK.framework \\\n    -output ios/sdk/out/JitsiMeetSDK.xcframework\ncp -a node_modules/react-native-webrtc/apple/WebRTC.xcframework ios/sdk/out"
   }
 }
