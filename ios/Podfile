@@ -1,6 +1,5 @@
 platform :ios, '11.0'
 workspace 'jitsi-meet'
-require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 install! 'cocoapods', :deterministic_uuids => false
 
@@ -10,9 +9,6 @@ target 'JitsiMeet' do
   pod 'Firebase/Analytics', '~> 6.33.0'
   pod 'Firebase/Crashlytics', '~> 6.33.0'
   pod 'Firebase/DynamicLinks', '~> 6.33.0'
-
-  # config = use_native_modules!
-  # use_react_native!(:path => config["reactNativePath"])
 end
 
 target 'JitsiMeetSDK' do
@@ -21,39 +17,39 @@ target 'JitsiMeetSDK' do
   # React Native and its dependencies
   #
 
-  # pod 'FBLazyVector', :path => '../node_modules/react-native/Libraries/FBLazyVector/'
-  # pod 'FBReactNativeSpec', :path => '../node_modules/react-native/Libraries/FBReactNativeSpec/'
-  # pod 'RCTRequired', :path => '../node_modules/react-native/Libraries/RCTRequired/'
-  # pod 'RCTTypeSafety', :path => '../node_modules/react-native/Libraries/TypeSafety/'
-  # pod 'React', :path => '../node_modules/react-native/'
-  # pod 'ReactCommon', :path => '../node_modules/react-native/ReactCommon', :subspecs => [
-  #   'turbomodule'
-  # ]
-  # pod 'React-Core', :path => '../node_modules/react-native/', :subspecs => [
-  #   'CoreModulesHeaders',
-  #   'DevSupport',
-  #   'RCTWebSocket'
-  # ]
-  # pod 'React-CoreModules', :path => '../node_modules/react-native/React/CoreModules'
-  # pod 'React-RCTActionSheet', :path => '../node_modules/react-native/Libraries/ActionSheetIOS'
-  # pod 'React-RCTAnimation', :path => '../node_modules/react-native/Libraries/NativeAnimation'
-  # pod 'React-RCTBlob', :path => '../node_modules/react-native/Libraries/Blob'
-  # pod 'React-RCTImage', :path => '../node_modules/react-native/Libraries/Image'
-  # pod 'React-RCTLinking', :path => '../node_modules/react-native/Libraries/LinkingIOS'
-  # pod 'React-RCTNetwork', :path => '../node_modules/react-native/Libraries/Network'
-  # pod 'React-RCTSettings', :path => '../node_modules/react-native/Libraries/Settings'
-  # pod 'React-RCTText', :path => '../node_modules/react-native/Libraries/Text'
-  # pod 'React-RCTVibration', :path => '../node_modules/react-native/Libraries/Vibration'
+  pod 'FBLazyVector', :path => '../node_modules/react-native/Libraries/FBLazyVector/'
+  pod 'FBReactNativeSpec', :path => '../node_modules/react-native/Libraries/FBReactNativeSpec/'
+  pod 'RCTRequired', :path => '../node_modules/react-native/Libraries/RCTRequired/'
+  pod 'RCTTypeSafety', :path => '../node_modules/react-native/Libraries/TypeSafety/'
+  pod 'React', :path => '../node_modules/react-native/'
+  pod 'ReactCommon', :path => '../node_modules/react-native/ReactCommon', :subspecs => [
+    'turbomodule'
+  ]
+  pod 'React-Core', :path => '../node_modules/react-native/', :subspecs => [
+    'CoreModulesHeaders',
+    'DevSupport',
+    'RCTWebSocket'
+  ]
+  pod 'React-CoreModules', :path => '../node_modules/react-native/React/CoreModules'
+  pod 'React-RCTActionSheet', :path => '../node_modules/react-native/Libraries/ActionSheetIOS'
+  pod 'React-RCTAnimation', :path => '../node_modules/react-native/Libraries/NativeAnimation'
+  pod 'React-RCTBlob', :path => '../node_modules/react-native/Libraries/Blob'
+  pod 'React-RCTImage', :path => '../node_modules/react-native/Libraries/Image'
+  pod 'React-RCTLinking', :path => '../node_modules/react-native/Libraries/LinkingIOS'
+  pod 'React-RCTNetwork', :path => '../node_modules/react-native/Libraries/Network'
+  pod 'React-RCTSettings', :path => '../node_modules/react-native/Libraries/Settings'
+  pod 'React-RCTText', :path => '../node_modules/react-native/Libraries/Text'
+  pod 'React-RCTVibration', :path => '../node_modules/react-native/Libraries/Vibration'
 
-  # pod 'React-cxxreact', :path => '../node_modules/react-native/ReactCommon/cxxreact'
-  # pod 'React-jsi', :path => '../node_modules/react-native/ReactCommon/jsi'
-  # pod 'React-jsiexecutor', :path => '../node_modules/react-native/ReactCommon/jsiexecutor'
-  # pod 'React-jsinspector', :path => '../node_modules/react-native/ReactCommon/jsinspector'
-  # pod 'Yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
+  pod 'React-cxxreact', :path => '../node_modules/react-native/ReactCommon/cxxreact'
+  pod 'React-jsi', :path => '../node_modules/react-native/ReactCommon/jsi'
+  pod 'React-jsiexecutor', :path => '../node_modules/react-native/ReactCommon/jsiexecutor'
+  pod 'React-jsinspector', :path => '../node_modules/react-native/ReactCommon/jsinspector'
+  pod 'Yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
 
-  # pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
-  # pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
-  # pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
+  pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
+  pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
+  pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
   # React Native plugins
   #
@@ -70,15 +66,13 @@ target 'JitsiMeetSDK' do
   pod 'RNSVG', :path => '../node_modules/react-native-svg'
   pod 'RNWatch', :path => '../node_modules/react-native-watch-connectivity'
   pod 'RNDefaultPreference', :path => '../node_modules/react-native-default-preference'
-  config = use_native_modules!
-  use_react_native!(:path => config["reactNativePath"])
 
   # Native pod dependencies
   #
 
   pod 'CocoaLumberjack', '~>3.5.3'
 
-  # use_native_modules!
+  use_native_modules!
 end
 
 post_install do |installer|
