@@ -10,9 +10,11 @@ import { SharedDocumentButton } from '../../../etherpad';
 import { InviteButton } from '../../../invite';
 import { AudioRouteButton } from '../../../mobile/audio-mode';
 import { ReactionMenu } from '../../../reactions/components';
-import { LiveStreamButton, RecordButton } from '../../../recording';
+import {
+    // LiveStreamButton,
+    RecordButton } from '../../../recording';
 import SecurityDialogButton from '../../../security/components/security-dialog/SecurityDialogButton';
-import { SharedVideoButton } from '../../../shared-video/components';
+// import { SharedVideoButton } from '../../../shared-video/components';
 import { ClosedCaptionButton } from '../../../subtitles';
 import { TileViewButton } from '../../../video-layout';
 import { getMovableButtons } from '../../functions.native';
@@ -137,9 +139,9 @@ class OverflowMenu extends PureComponent<Props, State> {
                 <ScreenSharingButton { ...buttonProps } />
                 {!toolbarButtons.has('togglecamera') && <ToggleCameraButton { ...buttonProps } />}
                 {!toolbarButtons.has('tileview') && <TileViewButton { ...buttonProps } />}
-                <RecordButton { ...buttonProps } />
-                <LiveStreamButton { ...buttonProps } />
-                <SharedVideoButton { ...buttonProps } />
+                {/*   <RecordButton { ...buttonProps } />*/}
+                {/* <LiveStreamButton { ...buttonProps } />*/}
+                {/*<SharedVideoButton { ...buttonProps } />*/}
                 <ClosedCaptionButton { ...buttonProps } />
                 <SharedDocumentButton { ...buttonProps } />
                 <MuteEveryoneButton { ...buttonProps } />
