@@ -102,6 +102,15 @@ const styles = {
         maxWidth: 580,
         marginLeft: 'auto',
         marginRight: 'auto'
+    },
+    toolbar: {
+        alignItems: 'center',
+        flexDirection: 'row',
+        flexGrow: 0,
+        justifyContent: 'center',
+        marginBottom: (BoxModel.margin / 2) + 25,
+        paddingHorizontal: BoxModel.margin,
+        marginHorizontal: -5
     }
 };
 

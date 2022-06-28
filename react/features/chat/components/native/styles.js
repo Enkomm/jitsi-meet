@@ -124,6 +124,23 @@ export default {
     timeText: {
         color: 'rgb(164, 184, 209)',
         fontSize: 13
+    },
+
+    countUnread: {
+        backgroundColor: '#FF1C1C',
+        borderRadius: 12,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 20,
+        height: 20,
+        position: 'absolute',
+        top: 4,
+        left: '48%'
+    },
+
+    txtUnread: {
+        color: '#fff',
+        fontSize: 12
     }
 };
 

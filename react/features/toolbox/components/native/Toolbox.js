@@ -18,6 +18,7 @@ import VideoMuteButton from '../VideoMuteButton';
 import OverflowMenuButton from './OverflowMenuButton';
 import ToggleCameraButton from './ToggleCameraButton';
 import styles from './styles';
+import ChatAppCounter from "../../../chat/components/native/ChatAppCounter";
 
 /**
  * The type of {@link Toolbox}'s React {@code Component} props.
@@ -82,10 +83,10 @@ function Toolbox(props: Props) {
                     styles = { buttonStylesBorderless }
                     toggledStyles = { toggledButtonStyles } />
                 { additionalButtons.has('chat')
-                      && <ChatButton
-                          styles = { buttonStylesBorderless }
-                          toggledStyles = { backgroundToggledStyle } />}
-
+                    && <ChatButton
+                        styles = { buttonStylesBorderless }
+                        toggledStyles = { backgroundToggledStyle } />}
+                <ChatAppCounter />
                 { additionalButtons.has('raisehand')
                     && <ReactionsMenuButton
                         styles = { buttonStylesBorderless }
@@ -93,9 +94,9 @@ function Toolbox(props: Props) {
                 {additionalButtons.has('tileview') && <TileViewButton styles = { buttonStylesBorderless } />}
                 {additionalButtons.has('invite') && <InviteButton styles = { buttonStylesBorderless } />}
                 {additionalButtons.has('togglecamera')
-                      && <ToggleCameraButton
-                          styles = { buttonStylesBorderless }
-                          toggledStyles = { backgroundToggledStyle } />}
+                    && <ToggleCameraButton
+                        styles = { buttonStylesBorderless }
+                        toggledStyles = { backgroundToggledStyle } />}
                 <OverflowMenuButton
                     styles = { buttonStylesBorderless }
                     toggledStyles = { toggledButtonStyles } />

@@ -71,6 +71,10 @@ export function getUnreadCount(state: Object) {
 
     if (navigator.product === 'ReactNative') {
         // React native stores the messages in a reversed order.
+        if (!lastReadMessage) {
+            return messagesCount;
+        }
+
         return messages.indexOf(lastReadMessage);
     }
 
