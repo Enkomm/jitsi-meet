@@ -15,7 +15,7 @@ import AbstractLiveStreamButton, { _mapStateToProps as _abstractMapStateToProps 
  * @returns {Props}
  */
 export function mapStateToProps(state: Object, ownProps: Object) {
-    const enabled = getFeatureFlag(state, LIVE_STREAMING_ENABLED, true);
+    const enabled = getFeatureFlag(state, LIVE_STREAMING_ENABLED, false);
     const abstractProps = _abstractMapStateToProps(state, ownProps);
 
     return {

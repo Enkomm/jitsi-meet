@@ -12,7 +12,9 @@ import { StyleType } from '../../../base/styles';
 import { SharedDocumentButton } from '../../../etherpad';
 import { InviteButton } from '../../../invite';
 import { AudioRouteButton } from '../../../mobile/audio-mode';
-import { LiveStreamButton, RecordButton } from '../../../recording';
+import {
+    LiveStreamButton,
+    RecordButton } from '../../../recording';
 import SecurityDialogButton from '../../../security/components/security-dialog/SecurityDialogButton';
 import { SharedVideoButton } from '../../../shared-video/components';
 import { ClosedCaptionButton } from '../../../subtitles';
