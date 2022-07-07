@@ -47,11 +47,13 @@
     "chat": {
         "error": "Lỗi: thông điệp của bạn \"{{originalText}}\" không được gửi. Nguyên nhân: {{error}}",
         "messagebox": "Nhập một thông điệp",
+        "fieldPlaceHolder": "Nhập tin nhắn của bạn tại đây",
         "nickname": {
             "popover": "Chọn biệt danh",
             "title": "Nhập một tên để sử dụng Chat"
         },
-        "title": "Chat"
+        "title": "Trò chuyện",
+        "noMessagesMessage": "Không có tin nhắn nào trong cuộc họp. Bắt đầu một cuộc trò chuyện tại đây!"
     },
     "connectingOverlay": {
         "joiningRoom": "Đang kết nối tới cuộc họp của bạn…"
@@ -182,7 +184,7 @@
         "liveStreamingDisabledForGuestTooltip": "Khách không thể phát trực tuyến.",
         "liveStreamingDisabledTooltip": "Khởi tạo phát trực tuyến đã tắt.",
         "lockMessage": "Khóa hội nghị thất bại.",
-        "lockRoom": "",
+        "lockRoom": "Thêm $t(lockRoomPassword) cuộc họp",
         "lockTitle": "Khóa thất bại",
         "logoutQuestion": "Bạn có chắc chắn muốn đăng xuất và dừng hội nghị?",
         "logoutTitle": "Đăng xuất",
@@ -590,6 +592,7 @@
         "exitTileView": "Thoát xem dạng lưới",
         "feedback": "Để lại phản hồi",
         "hangup": "Thoát",
+        "help": "Trợ giúp",
         "invite": "Mời người tham gia",
         "login": "Đăng nhập",
         "logout": "Đăng xuất",
@@ -616,7 +619,11 @@
         "toggleCamera": "Mở/Đóng Camera",
         "videomute": "Bật / Tắt camera",
         "startvideoblur": "",
-        "stopvideoblur": ""
+        "stopvideoblur": "",
+        "security": "Tùy chọn bảo mật",
+        "moreOptions": "Nhiều lựa chọn hơn",
+        "muteEveryone": "Tắt tiếng của tất cả mọi người",
+        "muteEveryonesVideo": "Tắt camera của tất cả mọi người"
     },
     "transcribing": {
         "ccButtonTooltip": "Chạy/Dừng phụ đề",
@@ -705,5 +712,17 @@
         "sendFeedback": "Gửi góp ý",
         "terms": "Điều kiện",
         "title": "Bảo mật, đầy đủ tính năng và miễn phí hoàn toàn"
+    },
+    "lobby": {
+        "dialogTitle": "Lobby mode",
+        "passwordField": "Nhập mật khẩu cuộc họp",
+        "enableDialogText": "Lobby mode cho phép bạn bảo vệ cuộc họp của mình bằng cách chỉ cho phép mọi người tham gia sau khi được người kiểm duyệt chính thức phê duyệt."
+    },
+    "lonelyMeetingExperience": {
+        "button": "Mời người khác",
+        "youAreAlone": "Bạn là người duy nhất trong cuộc họp"
+    },
+    "security": {
+        "about": "Bạn có thể thiết lập $t(lockRoomPassword) cho cuộc họp. Người tham dự cần phải nhập $t(lockRoomPassword) trước khi được phép vào phòng họp."
     }
 }
