@@ -80,3 +80,51 @@ For information on reporting security vulnerabilities in Jitsi Meet, see [SECURI
 ## Acknowledgements
 
 Jitsi Meet started out as a sample conferencing application using Jitsi Videobridge. It was originally developed by ESTOS' developer Philipp Hancke who then contributed it to the community where development continues with joint forces!
+
+
+## Build SDK Android
+```
+- npm install
+- mkdir -p sdk && ./android/scripts/release-sdk.sh ./sdk
+- sau khi build xong copy folder com & org đẩy lên github repo
+jitsi-maven-repository
+```
+
+## Build SDK iOS
+```
+- npm install
+- cd ios && pod install && cd ..
+- mkdir -p ios/sdk/out
+xcodebuild clean \
+    -workspace ios/jitsi-meet.xcworkspace \
+    -scheme JitsiMeetSDK
+xcodebuild archive \
+    -workspace ios/jitsi-meet.xcworkspace \
+    -scheme JitsiMeetSDK  \
+    -configuration Release \
+    -sdk iphonesimulator \
+    -destination='generic/platform=iOS Simulator' \
+    -archivePath ios/sdk/out/ios-simulator \
+    VALID_ARCHS=x86_64 \
+    ENABLE_BITCODE=NO \
+    SKIP_INSTALL=NO \
+    BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+xcodebuild archive \
+    -workspace ios/jitsi-meet.xcworkspace \
+    -scheme JitsiMeetSDK  \
+    -configuration Release \
+    -sdk iphoneos \
+    -destination='generic/platform=iOS' \
+    -archivePath ios/sdk/out/ios-device \
+    VALID_ARCHS=arm64 \
+    ENABLE_BITCODE=NO \
+    SKIP_INSTALL=NO \
+    BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+xcodebuild -create-xcframework \
+    -framework ios/sdk/out/ios-device.xcarchive/Products/Library/Frameworks/JitsiMeetSDK.framework \
+    -framework ios/sdk/out/ios-simulator.xcarchive/Products/Library/Frameworks/JitsiMeetSDK.framework \
+    -output ios/sdk/out/JitsiMeetSDK.xcframework
+cp -a node_modules/react-native-webrtc/apple/WebRTC.xcframework ios/sdk/out
+- sau khi build xong copy folder JitsiMeetSDK.xcframework & WebRTC.xcframework đẩy lên github repo
+jitsi-meet-ios-sdk-releases
+```
