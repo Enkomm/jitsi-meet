@@ -49,14 +49,14 @@ extension CXCallController: CXCallControllerProtocol {
     private override init() {}
 
     // MARK: - CallKit proxy
-    
+
     public static var callKitProvider: CXProviderProtocol?
     public static var callKitCallController: CXCallControllerProtocol?
 
     private static var provider: CXProviderProtocol {
         callKitProvider ?? defaultProvider
     }
-    
+
     private static var callController: CXCallControllerProtocol {
         callKitCallController ?? defaultCallController
     }
@@ -68,11 +68,11 @@ extension CXCallController: CXCallControllerProtocol {
             provider.setDelegate(emitter, queue: nil)
         }
     }
-    
+
     private static let defaultCallController: CXCallController = {
         return CXCallController()
     }()
-    
+
     private static var defaultProvider: CXProvider = {
         let configuration = CXProviderConfiguration(localizedName: "")
         return CXProvider(configuration: configuration)
@@ -89,13 +89,13 @@ extension CXCallController: CXCallControllerProtocol {
             if callKitProvider == nil {
                 provider.invalidate()
             }
-            
+
             if enabled {
                 guard isProviderConfigured() else  { return }
                 if callKitProvider == nil {
                     defaultProvider = CXProvider(configuration: providerConfiguration!)
                 }
-                
+
                 provider.setDelegate(emitter, queue: nil)
             } else {
                 provider.setDelegate(nil, queue: nil)
@@ -115,6 +115,7 @@ extension CXCallController: CXCallControllerProtocol {
         configuration.ringtoneSound = ringtoneSound
         configuration.supportedHandleTypes = [CXHandle.HandleType.generic]
         configuration.supportsVideo = true
+        configuration.includesCallsInRecents = false;
 
         providerConfiguration = configuration
     }
