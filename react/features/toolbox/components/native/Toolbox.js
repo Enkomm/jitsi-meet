@@ -7,6 +7,7 @@ import { ColorSchemeRegistry } from '../../../base/color-scheme';
 import { connect } from '../../../base/redux';
 import { StyleType } from '../../../base/styles';
 import { ChatButton } from '../../../chat';
+import ChatAppCounter from '../../../chat/components/native/ChatAppCounter';
 import { InviteButton } from '../../../invite';
 import { TileViewButton } from '../../../video-layout';
 import { isToolboxVisible, getMovableButtons } from '../../functions.native';
@@ -85,7 +86,7 @@ function Toolbox(props: Props) {
                       && <ChatButton
                           styles = { buttonStylesBorderless }
                           toggledStyles = { backgroundToggledStyle } />}
-
+                <ChatAppCounter />
                 { additionalButtons.has('raisehand')
                       && <RaiseHandButton
                           styles = { buttonStylesBorderless }
