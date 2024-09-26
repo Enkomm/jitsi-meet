@@ -17,7 +17,7 @@ import AbstractRecordButton, { _mapStateToProps as _abstractMapStateToProps } fr
  * @returns {Props}
  */
 export function mapStateToProps(state: Object, ownProps: Object) {
-    const enabled = getFeatureFlag(state, RECORDING_ENABLED, true);
+    const enabled = getFeatureFlag(state, RECORDING_ENABLED, false);
     const iosEnabled = Platform.OS !== 'ios' || getFeatureFlag(state, IOS_RECORDING_ENABLED, false);
     const abstractProps = _abstractMapStateToProps(state, ownProps);
 

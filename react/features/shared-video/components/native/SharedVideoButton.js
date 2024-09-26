@@ -98,7 +98,7 @@ class VideoShareButton extends AbstractButton<Props, *> {
 function _mapStateToProps(state, ownProps): Object {
     const { ownerId, status: sharedVideoStatus } = state['features/shared-video'];
     const localParticipantId = getLocalParticipant(state).id;
-    const enabled = getFeatureFlag(state, VIDEO_SHARE_BUTTON_ENABLED, true);
+    const enabled = getFeatureFlag(state, VIDEO_SHARE_BUTTON_ENABLED, false);
     const { visible = enabled } = ownProps;
 
     if (ownerId !== localParticipantId) {
